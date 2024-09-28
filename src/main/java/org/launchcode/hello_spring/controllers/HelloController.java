@@ -24,8 +24,9 @@ public class HelloController {
 
     //Handles requests of the form /hello?name=LaunchCode
     @RequestMapping(method={RequestMethod.GET, RequestMethod.POST}, value = "hello")
-    public String helloWithQueryParam(@RequestParam String name) {
-        return "Hello, " + name + "!";
+    public String helloWithQueryParam(@RequestParam String name, @RequestParam String language) {
+//        return "Hello, " + name + "!";
+        return createMessage(name, language);
     }
 
     //Handles requests of the form /hello/LaunchCode
@@ -40,9 +41,54 @@ public class HelloController {
                 "<body>" +
                 "<form action='hello' method='post'>" +
                 "<input type='text' name='name'>" +
+                "<select id='language' name='language'>" +
+                "<option value='English'>English</option>" +
+                "<option value='French'>French</option>" +
+                "<option value='German'>German</option>" +
+                "<option value='Russian'>Russian</option>" +
+                "<option value=''Spanish'>Spanish</option>" +
+                "</select>" +
                 "<input type='submit' value='Greet me!'>" +
                 "</form>" +
                 "</body>" +
                 "</html>";
+    }
+
+    public static String createMessage(String name, String language) {
+        String greeting = "";
+
+        if (language.equals("French")) {
+            greeting = "Bonjour, ";
+        } else if (language.equals("German")) {
+            greeting = "Hallo, ";
+        } else if (language.equals("Russian")) {
+            greeting = "Привет, ";
+        } else if (language.equals("Spanish")) {
+            greeting = "¡Hola, ";
+        } else {
+            greeting = "Hello, ";
+        }
+
+        return "<body " +
+                "style='" +
+                "background-color: #2D3748;" +
+                "display: flex;" +
+                "justify-content: center;" +
+                "align-items: center;" +
+                "height: 100vh;" +
+                "margin: auto;" +
+                "overflow: hidden;" +
+                "'>" +
+                "<h1 " +
+                "style='" +
+                "background-color: #6d8bbd;" +
+                "border: 2px solid black;" +
+                "padding: 20px;" +
+                "'>" +
+                greeting + name + "!" +
+                "</h1>" +
+                "</body>";
+
+
     }
 }
