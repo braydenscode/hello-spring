@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body
+style='
+background-color: #2D3748;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: auto;
+overflow: hidden;
+'>
+<form action='hello' method='post'>
+    <label style='color:white;'for='name'>Name: </label>
+    <input type='text' name='name' />
+    <select id='language' name='language'>
+        <option value='English' selected>English</option>
+        <option value='French'>French</option>
+        <option value='German'>German</option>
+        <option value='Russian'>Russian</option>
+        <option value='Spanish'>Spanish</option>
+        </select>
+    <input type='submit' value='Greet me!' />
+    </form>
+</body>
+</html>
